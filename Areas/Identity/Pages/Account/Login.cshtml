@@ -1,0 +1,44 @@
+﻿@page
+@model QLTimViecLamSinhVien.Areas.Identity.Pages.Account.LoginModel
+
+<form method="post">
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
+    }
+
+    <div class="form-group">
+        <label asp-for="Input.Email" class="control-label"></label>
+        <input asp-for="Input.Email" class="form-control" />
+        <span asp-validation-for="Input.Email" class="text-danger"></span>
+    </div>
+
+    <!-- Mật khẩu -->
+    <div class="form-group">
+        <label asp-for="Input.Password" class="control-label"></label>
+        <div class="input-group">
+            <input id="Password" asp-for="Input.Password" class="form-control" type="password" />
+            <button type="button" class="btn btn-secondary" id="togglePassword">
+                <i class="fa fa-eye"></i> <!-- Icon mắt -->
+            </button>
+        </div>
+        <span asp-validation-for="Input.Password" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Login</button>
+</form>
+
+@* Add the JS to toggle password visibility *@
+<script>
+    const togglePassword = document.getElementById("togglePassword");
+    const passwordField = document.getElementById("Password");
+
+    togglePassword.addEventListener("click", function () {
+        // Toggle password visibility
+        const type = passwordField.type === "password" ? "text" : "password";
+        passwordField.type = type;
+
+        // Toggle icon
+        this.innerHTML = type === "password" ? "<i class='fa fa-eye'></i>" : "<i class='fa fa-eye-slash'></i>";
+    });
+</script>

@@ -1,0 +1,102 @@
+﻿/* site.css */
+
+/* ========== Global Settings ========== */
+html {
+    position: relative;
+    min-height: 100%;
+    font-size: 14px; /* Mặc định 14px */
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px; /* Tăng lên 16px khi màn hình >= 768px */
+    }
+}
+
+body {
+    margin-bottom: 60px;
+}
+
+/* ========== Focus Styles (Bootstrap override) ========== */
+.btn:focus,
+.btn:active:focus,
+.btn-link.nav-link:focus,
+.form-control:focus,
+.form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+/* ========== Navbar Custom (màu xanh) ========== */
+.navbar-custom {
+    background-color: #28a745 !important; /* Màu xanh lá, bạn có thể thay đổi */
+}
+
+    /* Chữ màu trắng khi dùng nền xanh */
+    .navbar-custom .navbar-brand,
+    .navbar-custom .navbar-nav .nav-link {
+        color: #ffffff !important;
+    }
+
+.hero-section {
+    background-color: #28a745; 
+    color: #fff;
+    padding: 50px 0;
+    text-align: center;
+}
+
+    .hero-section h1 {
+        font-size: 2rem;
+        margin-bottom: 30px;
+    }
+
+    .hero-section .search-box {
+        max-width: 700px;
+        margin: 0 auto;
+    }
+
+        .hero-section .search-box .form-control {
+            margin-bottom: 10px;
+        }
+
+        .hero-section .search-box button {
+            margin-top: 10px;
+        }
+
+/* ========== Thông báo thành công (khi xóa) ========== */
+.alert-success {
+    margin-top: 20px;
+}
+
+/* ========== Form-floating placeholders (CSS mới) ========== */
+.form-floating > .form-control-plaintext::placeholder,
+.form-floating > .form-control::placeholder {
+    color: var(--bs-secondary-color);
+    text-align: end;
+}
+
+.form-floating > .form-control-plaintext:focus::placeholder,
+.form-floating > .form-control:focus::placeholder {
+    text-align: start;
+}
+/* Nút với hiệu ứng 3D */
+.btn-3d {
+    background-color: #28a745; /* Màu nền xanh lá */
+    border: none;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 4px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+    .btn-3d:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 8px rgba(0, 0, 0, 0.4);
+    }
+
+    .btn-3d:active {
+        transform: translateY(0);
+        box-shadow: 0 3px 4px rgba(0, 0, 0, 0.2);
+    }

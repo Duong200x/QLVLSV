@@ -1,0 +1,59 @@
+﻿@model IEnumerable<QLTimViecLamSinhVien.Models.Job>
+
+@{
+    ViewData["Title"] = "Danh sách việc làm";
+}
+
+<h1>Danh sách việc làm</h1>
+
+<!-- Hiển thị thông báo khi xóa xong -->
+@if (ViewBag.Message != null)
+{
+    <div class="alert alert-success">
+        @ViewBag.Message
+    </div>
+}
+
+<p>
+    <a asp-action="Create" class="btn btn-success btn-3d">Tạo việc làm mới</a>
+</p>
+
+<table class="table table-bordered table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th>Tiêu đề</th>
+            <th>Công ty</th>
+            <th>Vị trí</th>
+            <th>Lương</th>
+            <th>Ngày đăng</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Title</td>
+                <td>@item.CompanyName</td>
+                <td>@item.Location</td>
+                <td>
+                    @(item.Salary.HasValue ? item.Salary.Value.ToString("N0") + " VNĐ" : "Thỏa thuận")
+                </td>
+                <td>
+                    @(item.PostedAt.HasValue ? item.PostedAt.Value.ToString("dd/MM/yyyy") : "")
+                </td>
+                <td style="white-space: nowrap;">
+                    <a asp-action="Edit" asp-route-id="@item.JobId" class="btn btn-warning btn-sm">Sửa</a>
+                    <a asp-action="Details" asp-route-id="@item.JobId" class="btn btn-info btn-sm">Chi tiết</a>
+
+                    <form asp-action="Delete" asp-route-id="@item.JobId" method="post" style="display:inline;">
+                        <button type="submit" class="btn btn-danger btn-sm"
+                                onclick="return confirm('Bạn có chắc muốn xóa?');">
+                            Xóa
+                        </button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

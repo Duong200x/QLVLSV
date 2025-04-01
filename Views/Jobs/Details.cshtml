@@ -1,0 +1,47 @@
+﻿@model QLTimViecLamSinhVien.Models.Job
+
+@{
+    ViewData["Title"] = "Chi tiết việc làm";
+}
+
+<h1>Chi tiết việc làm</h1>
+
+<div>
+    <h4>Thông tin việc làm</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3">Tiêu đề</dt>
+        <dd class="col-sm-9">@Model.Title</dd>
+
+        <dt class="col-sm-3">Mô tả</dt>
+        <dd class="col-sm-9">@Model.Description</dd>
+
+        <dt class="col-sm-3">Yêu cầu</dt>
+        <dd class="col-sm-9">@Model.Requirements</dd>
+
+        <dt class="col-sm-3">Công ty</dt>
+        <dd class="col-sm-9">@Model.CompanyName</dd>
+
+        <dt class="col-sm-3">Vị trí</dt>
+        <dd class="col-sm-9">@Model.Location</dd>
+
+        <dt class="col-sm-3">Mức lương</dt>
+        <dd class="col-sm-9">
+            @(Model.Salary.HasValue ? Model.Salary.Value.ToString("N0") + " VNĐ" : "Thỏa thuận")
+        </dd>
+
+        <dt class="col-sm-3">Ngày đăng</dt>
+        <dd class="col-sm-9">
+            @(Model.PostedAt.HasValue ? Model.PostedAt.Value.ToString("dd/MM/yyyy") : "Không rõ")
+        </dd>
+
+        <dt class="col-sm-3">Ngày cập nhật</dt>
+        <dd class="col-sm-9">
+            @(Model.UpdatedAt.HasValue ? Model.UpdatedAt.Value.ToString("dd/MM/yyyy") : "Không rõ")
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.JobId" class="btn btn-warning">Sửa</a> |
+    <a asp-action="Index" class="btn btn-secondary">Quay lại danh sách</a>
+</div>

@@ -1,0 +1,30 @@
+﻿@{
+    ViewData["Title"] = "Trang chủ";
+}
+
+<div class="hero-section">
+    <h1>Tìm công việc hoàn hảo mà bạn xứng đáng</h1>
+    <div class="search-box">
+        <!-- Form GET tới controller Home, action Search -->
+        <form method="get" asp-controller="Home" asp-action="Search">
+            <div class="form-group">
+                <label for="keyword">Từ khóa</label>
+                <input type="text" id="keyword" name="keyword" class="form-control" placeholder="VD: Lập trình viên" />
+            </div>
+            <div class="form-group">
+                <label for="jobType">Loại công việc</label>
+                <select id="jobType" name="jobType" class="form-control">
+                    <option value="">-- Tất cả --</option>
+                    <option value="fulltime">Full-time</option>
+                    <option value="parttime">Part-time</option>
+                    <option value="intern">Internship</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="location">Vị trí</label>
+                <input type="text" id="location" name="location" class="form-control" placeholder="VD: Hà Nội" />
+            </div>
+            <button type="submit" class="btn btn-light btn-block mt-2">Tìm kiếm</button>
+        </form>
+    </div>
+</div>
